@@ -1,9 +1,11 @@
 package com.kargus.nytapidemo.services;
 
-import com.kargus.nytapidemo.models.*;
+import com.kargus.nytapidemo.models.Article;
+import com.kargus.nytapidemo.models.Media;
+import com.kargus.nytapidemo.models.NytResponse;
+import com.kargus.nytapidemo.models.Thumbnail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -28,7 +30,7 @@ public class ArticleService {
         if (response != null && response.getStatus().equals("OK")) {
             for(Article a : response.getResults()) {
                 for(Media m : a.getMedia()) {
-                    for(Thumbnail t : m.getMediaMetadata()) {           //my logic for the imageUrl challenge :)
+                    for(Thumbnail t : m.getMediaMetadata()) {           //my logic for the imageUrl challenge, why .equals() always null??
                         if(t.getUrl() == null) {
                             response.getResults().remove(a);
                         } else {
@@ -43,11 +45,11 @@ public class ArticleService {
         }
     }
 
-    public List<Doc> getSearchResults(String searchText) {
-        ResponseEntity<NytSearchResponse> response = restTemplate.getForEntity(mostPopularUrl + "api-key=" + apikey, NytSearchResponse.class);
-
-
-    }
+//    public List<Doc> getSearchResults(String searchText) {
+//        ResponseEntity<NytSearchResponse> response = restTemplate.getForEntity(mostPopularUrl + "api-key=" + apikey, NytSearchResponse.class);
+//
+//
+//    }
 
 
 }
