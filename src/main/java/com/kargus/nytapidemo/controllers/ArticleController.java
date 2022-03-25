@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class ArticleController {
@@ -20,19 +21,16 @@ public class ArticleController {
     }
 
     @GetMapping("/search")
-    public String searchHome() {
-        //TODO logic here
-
+    public String searchHome(Model model) {
 
         return "search.html";
     }
 
     @PostMapping("/search")
-    public String showResults() {
-        //TODO logic here
-
-
-        return "search-results.html";
+    public String showResults(Model model, @RequestParam String keyword) {
+       model.addAttribute("searchResults", articleService.getSearchResults(keyword));
+       model.addAttribute("keyword", keyword);
+       return "search-results.html";
     }
 }
 

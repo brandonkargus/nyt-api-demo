@@ -53,10 +53,10 @@ public class ArticleService {
             if (response.getBody() != null) {
                 docs = response.getBody().getResponse().getDocs();
                 for (Doc d : docs) {
-                    for (Multimedia m : d.getMultimedia()) {
-                        for (Media n : m.getMedia()) {
-                            if (n.getSubtype().equals("largeHorizontal375")) {
-                                d.setImageUrl("https://www.nytimes.com/" + n.getUrl());
+                    if(!d.getMultimedia().isEmpty()) {
+                        for (Media m : d.getMultimedia()) {
+                            if (m.getSubtype().equals("largeHorizontal375")) {
+                                d.setImageUrl("https://www.nytimes.com/" + m.getUrl());
                             }
                         }
                     }
