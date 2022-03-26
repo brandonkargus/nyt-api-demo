@@ -11,14 +11,8 @@
         <h1 class="display-4">Search New York Times:</h1>
         <form th:action="@{/search}" method="post">
             <input type="text" th:value="${keyword}" name="keyword">
-
             <button type="submit">Search</button>
-
         </form>
-
-
-
-
     </div>
 </div>
 <div th:replace="fragments :: footer"/>
