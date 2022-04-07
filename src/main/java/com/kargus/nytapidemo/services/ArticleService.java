@@ -56,7 +56,7 @@ public class ArticleService {
                     if(!d.getMultimedia().isEmpty()) {
                         for (Media m : d.getMultimedia()) {
                             if (m.getSubtype().equals("largeHorizontal375")) {
-                                d.setImageUrl("https://www.nytimes.com/" + m.getUrl());
+                                d.setImageUrl("https://www.nytimes.com/" + m.getUrl());     //solution for searchResults
                             }
                         }
                     }
