@@ -30,7 +30,7 @@ public class ArticleController {
     public String showResults(Model model, @RequestParam String keyword) {
        model.addAttribute("searchResults", articleService.getSearchResults(keyword));
        model.addAttribute("keyword", keyword);
-       return "search-results.html";
+       return "search.html";
     }
 }
 

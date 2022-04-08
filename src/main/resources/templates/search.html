@@ -14,6 +14,20 @@
             <button type="submit">Search</button>
         </form>
     </div>
+    <th:block >
+        <div class="row justify-content-center">
+            <div class="col-auto" th:each="doc: ${searchResults}">
+                <div class="card" style="width: 18rem; height: 34rem;">
+                    <img th:unless="${doc.imageUrl == null}" th:src="${doc.imageUrl}" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title" th:text="${doc.headline.main}">title</h5>
+                        <p class="card-text" th:text="${doc.summary}">summary</p>
+                        <a th:href="${doc.webUrl}" class="btn btn-primary">Read More..</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </th:block>
 </div>
 <div th:replace="fragments :: footer"/>
 
